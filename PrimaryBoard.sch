@@ -2074,19 +2074,63 @@ No plating, no silk outline.
 <text x="-1.27" y="1.397" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-1.27" y="-2.032" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
-<package name="SOT23-5">
-<smd name="5" x="-0.95" y="1.35" dx="0.55" dy="1" layer="1"/>
-<smd name="4" x="0.95" y="1.35" dx="0.55" dy="1" layer="1"/>
-<smd name="3" x="0.95" y="-1.35" dx="0.55" dy="1" layer="1"/>
-<smd name="2" x="0" y="-1.35" dx="0.55" dy="1" layer="1"/>
-<smd name="1" x="-0.95" y="-1.35" dx="0.55" dy="1" layer="1"/>
-<wire x1="-1.5" y1="0.75" x2="1.5" y2="0.75" width="0.127" layer="21"/>
-<wire x1="1.5" y1="0.75" x2="1.5" y2="-0.75" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-0.75" x2="-1.5" y2="-0.75" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-0.75" x2="-1.5" y2="0.75" width="0.127" layer="21"/>
-<circle x="-1.143" y="-0.381" radius="0.127" width="0.127" layer="21"/>
-<text x="-2.286" y="0" size="0.6096" layer="25" font="vector" ratio="15" rot="R90" align="center">&gt;NAME</text>
-<text x="2.286" y="0.127" size="0.6096" layer="27" font="vector" ratio="15" rot="R90" align="center">&gt;VALUE</text>
+<package name="SOT23-6L">
+<description>&lt;b&gt;Small Outline Transistor&lt;/b&gt;</description>
+<wire x1="1.422" y1="0.81" x2="1.422" y2="-0.81" width="0.1524" layer="21"/>
+<wire x1="1.422" y1="-0.81" x2="-1.422" y2="-0.81" width="0.1524" layer="51"/>
+<wire x1="-1.422" y1="-0.81" x2="-1.422" y2="0.81" width="0.1524" layer="21"/>
+<wire x1="-1.422" y1="0.81" x2="1.422" y2="0.81" width="0.1524" layer="51"/>
+<wire x1="-0.428" y1="-0.81" x2="-0.522" y2="-0.81" width="0.1524" layer="21"/>
+<wire x1="0.522" y1="-0.81" x2="0.428" y2="-0.81" width="0.1524" layer="21"/>
+<wire x1="-1.328" y1="-0.81" x2="-1.422" y2="-0.81" width="0.1524" layer="21"/>
+<wire x1="1.422" y1="-0.81" x2="1.328" y2="-0.81" width="0.1524" layer="21"/>
+<wire x1="1.328" y1="0.81" x2="1.422" y2="0.81" width="0.1524" layer="21"/>
+<wire x1="-1.422" y1="0.81" x2="-1.328" y2="0.81" width="0.1524" layer="21"/>
+<wire x1="0.428" y1="0.81" x2="0.522" y2="0.81" width="0.1524" layer="21"/>
+<wire x1="-0.522" y1="0.81" x2="-0.428" y2="0.81" width="0.1524" layer="21"/>
+<circle x="-1" y="-0.45" radius="0.1" width="0.1524" layer="21"/>
+<smd name="1" x="-0.95" y="-1.3" dx="0.55" dy="1.2" layer="1"/>
+<smd name="2" x="0" y="-1.3" dx="0.55" dy="1.2" layer="1"/>
+<smd name="3" x="0.95" y="-1.3" dx="0.55" dy="1.2" layer="1"/>
+<smd name="4" x="0.95" y="1.3" dx="0.55" dy="1.2" layer="1"/>
+<smd name="5" x="0" y="1.3" dx="0.55" dy="1.2" layer="1"/>
+<smd name="6" x="-0.95" y="1.3" dx="0.55" dy="1.2" layer="1"/>
+<text x="0" y="2.413" size="0.6096" layer="25" font="vector" ratio="15" align="center">&gt;NAME</text>
+<text x="0" y="-2.413" size="0.6096" layer="27" font="vector" ratio="15" align="center">&gt;VALUE</text>
+<rectangle x1="-1.2" y1="-1.5" x2="-0.7" y2="-0.85" layer="51"/>
+<rectangle x1="-0.25" y1="-1.5" x2="0.25" y2="-0.85" layer="51"/>
+<rectangle x1="0.7" y1="-1.5" x2="1.2" y2="-0.85" layer="51"/>
+<rectangle x1="0.7" y1="0.85" x2="1.2" y2="1.5" layer="51"/>
+<rectangle x1="-0.25" y1="0.85" x2="0.25" y2="1.5" layer="51"/>
+<rectangle x1="-1.2" y1="0.85" x2="-0.7" y2="1.5" layer="51"/>
+<wire x1="-1.2" y1="-1.5" x2="-1.2" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="-1.2" y1="-0.85" x2="-0.7" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="-0.7" y1="-0.85" x2="-0.7" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="-0.7" y1="-1.5" x2="-1.2" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="-0.25" y1="-1.5" x2="-0.25" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="-0.25" y1="-0.85" x2="0.25" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="0.25" y1="-0.85" x2="0.25" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="0.25" y1="-1.5" x2="-0.25" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="0.7" y1="-1.5" x2="0.7" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="0.7" y1="-0.85" x2="1.2" y2="-0.85" width="0.0011" layer="57"/>
+<wire x1="1.2" y1="-0.85" x2="1.2" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="1.2" y1="-1.5" x2="0.7" y2="-1.5" width="0.0011" layer="57"/>
+<wire x1="0.7" y1="0.85" x2="0.7" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="0.7" y1="1.5" x2="1.2" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="1.2" y1="1.5" x2="1.2" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="1.2" y1="0.85" x2="0.7" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="-0.25" y1="0.85" x2="-0.25" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="-0.25" y1="1.5" x2="0.25" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="0.25" y1="1.5" x2="0.25" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="0.25" y1="0.85" x2="-0.25" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="-1.2" y1="0.85" x2="-1.2" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="-1.2" y1="1.5" x2="-0.7" y2="1.5" width="0.0011" layer="57"/>
+<wire x1="-0.7" y1="1.5" x2="-0.7" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="-0.7" y1="0.85" x2="-1.2" y2="0.85" width="0.0011" layer="57"/>
+<wire x1="1.422" y1="0.81" x2="1.422" y2="-0.81" width="0.0011" layer="57"/>
+<wire x1="1.422" y1="-0.81" x2="-1.422" y2="-0.81" width="0.0011" layer="57"/>
+<wire x1="-1.422" y1="-0.81" x2="-1.422" y2="0.81" width="0.0011" layer="57"/>
+<wire x1="-1.422" y1="0.81" x2="1.422" y2="0.81" width="0.0011" layer="57"/>
 </package>
 <package name="2_56">
 <description>&lt;p&gt;&lt;b&gt;2x56 Non-Plated Mounting Hole &lt;/b&gt;
@@ -2457,10 +2501,11 @@ CONN_07
 <text x="0" y="24.13" size="1.27" layer="95" ratio="15" align="center">LoRa 32u4 II</text>
 <text x="0" y="-23.876" size="1.27" layer="95" ratio="15" align="center">&gt;NAME</text>
 </symbol>
-<symbol name="MCP3221">
-<pin name="VIN" x="15.24" y="2.54" length="middle" direction="in" rot="R180"/>
-<pin name="VDD" x="-12.7" y="5.08" length="middle" direction="pwr"/>
-<pin name="VSS" x="-12.7" y="0" length="middle" direction="pwr"/>
+<symbol name="MCP3425">
+<pin name="VIN+" x="15.24" y="2.54" length="middle" direction="in" rot="R180"/>
+<pin name="VIN-" x="15.24" y="-7.62" length="middle" direction="in" rot="R180"/>
+<pin name="VDD" x="-12.7" y="5.08" length="middle" direction="pas"/>
+<pin name="VSS" x="-12.7" y="0" length="middle" direction="pas"/>
 <pin name="SCL" x="-12.7" y="-5.08" length="middle"/>
 <pin name="SDA" x="-12.7" y="-10.16" length="middle"/>
 <wire x1="-7.62" y1="7.62" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
@@ -3634,45 +3679,79 @@ Mounting header designed for the LoRa 32u4 unit built by &lt;a href = https://bs
 </device>
 </devices>
 </deviceset>
-<deviceset name="MCP3221" prefix="U">
-<description>&lt;b&gt;MCP342*&lt;/b&gt; - SAR ADC
+<deviceset name="MCP342*" prefix="U">
+<description>&lt;b&gt;MCP342*&lt;/b&gt; - Sigma Delta ADC
  
 &lt;p&gt;Characteristics:
 &lt;ul&gt;
 &lt;li&gt;VCC: 2.7~5.5V&lt;/li&gt;
 &lt;li&gt;Operating Temperature: -40°C to 125°C&lt;/li&gt;
-&lt;li&gt;Number of Inputs: 1&lt;/li&gt;
-&lt;li&gt;Sample Rate: 22.3k Samples Per Second &lt;/li&gt;
-&lt;li&gt;Number of Bits: 12&lt;/li&gt;
+&lt;li&gt;Number of Inputs: 1 (Differenital)&lt;/li&gt;
+&lt;li&gt;Sample Rate: 15 Samples Per Second &lt;/li&gt;
+&lt;li&gt;Number of Bits: 16 (MCP3425), 18 (MCP3421) &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/p&gt;
  
 &lt;p&gt;Digikey: &lt;br&gt;
-
+&lt;br&gt;
+MCP3421
 &lt;ul&gt;
-&lt;a href = "https://www.digikey.com/product-detail/en/microchip-technology/MCP3221A5T-I-OT/MCP3221A5T-I-OTCT-ND/529836"&gt; MCP3221A5T-I/OTCT-ND &lt;/a&gt;&lt;br/&gt;
+&lt;li&gt;&lt;a href = "https://www.digikey.com/product-detail/en/microchip-technology/MCP3425A0T-E-CH/MCP3425A0T-E-CHCT-ND/1979810"&gt; MCP3425A0T-E/CHCT-ND &lt;/a&gt;&lt;br/&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+MCP3425
+&lt;ul&gt;
+&lt;li&gt;&lt;a href = "https://www.digikey.com/product-detail/en/microchip-technology/MCP3421A0T-E-CH/MCP3421A0T-E-CHCT-ND/2183406"&gt; MCP3421A0T-E/CHCT-ND &lt;/a&gt;&lt;br/&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href = "https://www.digikey.com/product-detail/en/microchip-technology/MCP3421A1T-E-CH/MCP3421A1T-E-CHCT-ND/2183407"&gt; MCP3421A1T-E/CHCT-ND &lt;/a&gt;&lt;br/&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href = "https://www.digikey.com/product-detail/en/microchip-technology/MCP3421A3T-E-CH/MCP3421A3T-E-CHCT-ND/2183409"&gt; MCP3421A3T-E/CHCT-ND &lt;/a&gt;&lt;br/&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;/p&gt;</description>
 <gates>
-<gate name="G$1" symbol="MCP3221" x="0" y="0"/>
+<gate name="G$1" symbol="MCP3425" x="0" y="2.54"/>
 </gates>
 <devices>
-<device name="" package="SOT23-5">
+<device name="" package="SOT23-6L">
 <connects>
-<connect gate="G$1" pin="SCL" pad="5"/>
+<connect gate="G$1" pin="SCL" pad="3"/>
 <connect gate="G$1" pin="SDA" pad="4"/>
-<connect gate="G$1" pin="VDD" pad="1"/>
-<connect gate="G$1" pin="VIN" pad="3"/>
+<connect gate="G$1" pin="VDD" pad="5"/>
+<connect gate="G$1" pin="VIN+" pad="1"/>
+<connect gate="G$1" pin="VIN-" pad="6"/>
 <connect gate="G$1" pin="VSS" pad="2"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="MCP3221A5T-I/OTCT-ND" constant="no"/>
-<attribute name="DISP" value="MCP3221" constant="no"/>
-<attribute name="MF" value="TI" constant="no"/>
-<attribute name="MPN" value="MCP3221A5T-I/OT" constant="no"/>
+<attribute name="DIGIKEY" value="" constant="no"/>
+<attribute name="DISP" value="" constant="no"/>
+<attribute name="MF" value="Microchip" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+</technology>
+<technology name="1A0">
+<attribute name="DIGIKEY" value="MCP3421A0T-E/CHCT-ND" constant="no"/>
+<attribute name="DISP" value="MCP3421" constant="no"/>
+<attribute name="MF" value="Microchip" constant="no"/>
+<attribute name="MPN" value="MCP3421A0T-E/CH" constant="no"/>
+</technology>
+<technology name="1A1">
+<attribute name="DIGIKEY" value="MCP3421A1T-E/CHCT-ND" constant="no"/>
+<attribute name="DISP" value="MCP3421" constant="no"/>
+<attribute name="MF" value="Microchip" constant="no"/>
+<attribute name="MPN" value="MCP3421A1T-E/CH" constant="no"/>
+</technology>
+<technology name="1A3">
+<attribute name="DIGIKEY" value="MCP3421A3T-E/CHCT-ND" constant="no"/>
+<attribute name="DISP" value="MCP3421" constant="no"/>
+<attribute name="MF" value="Microchip" constant="no"/>
+<attribute name="MPN" value="MCP3421A3T-E/CH" constant="no"/>
+</technology>
+<technology name="5">
+<attribute name="DIGIKEY" value="MCP3425A0T-E/CHCT-ND" constant="no"/>
+<attribute name="DISP" value="MCP3425" constant="no"/>
+<attribute name="MF" value="Microchip" constant="no"/>
+<attribute name="MPN" value="MCP3425A0T-E/CH" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -15936,8 +16015,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="J6" library="bschulz" deviceset="CONN_3" device="2.54_SCREW"/>
 <part name="J7" library="bschulz" deviceset="CONN_3" device="2.54_SCREW"/>
 <part name="J8" library="bschulz" deviceset="CONN_3" device="2.54_SCREW"/>
-<part name="U5" library="bschulz" deviceset="MCP3221" device=""/>
-<part name="C6" library="bschulz_passives" deviceset="C-EU" device="C0805"/>
+<part name="U5" library="bschulz" deviceset="MCP342*" device="" technology="1A3" value="MCP3421A3"/>
+<part name="C6" library="bschulz_passives" deviceset="C-EU" device="C0805" value="0.1uF"/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R2" library="bschulz_passives" deviceset="R-EU_" device="R0805" value="10k"/>
 <part name="R3" library="bschulz_passives" deviceset="R-EU_" device="R0805" value="10k"/>
@@ -15950,6 +16029,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="TP4" library="bschulz" deviceset="TESTPOINT" device="RCU"/>
 <part name="TP5" library="bschulz" deviceset="TESTPOINT" device="RCU"/>
 <part name="TP6" library="bschulz" deviceset="TESTPOINT" device="RCU"/>
+<part name="C7" library="bschulz_passives" deviceset="C-EU" device="C0805" value="0.1uF"/>
+<part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C8" library="bschulz_passives" deviceset="C-EU" device="C0805" value="0.1uF"/>
+<part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15960,6 +16044,8 @@ IO_EN
 ONEWIRE
 LORA_EN
 5V_EXT_SENSE</text>
+<text x="142.24" y="76.2" size="1.778" layer="91">ADR = 0x6B</text>
+<text x="48.26" y="73.66" size="1.778" layer="91">ADR = 0x40</text>
 </plain>
 <instances>
 <instance part="J1" gate="G$1" x="2.54" y="21.59" smashed="yes">
@@ -16147,6 +16233,23 @@ LORA_EN
 <instance part="TP6" gate="G$1" x="210.82" y="12.7" smashed="yes" rot="R90">
 <attribute name="NAME" x="207.01" y="10.16" size="1.27" layer="95" rot="R180" align="center"/>
 </instance>
+<instance part="C7" gate="G$1" x="-30.48" y="110.49" smashed="yes">
+<attribute name="NAME" x="-28.956" y="110.871" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-28.956" y="105.791" size="1.778" layer="96"/>
+</instance>
+<instance part="GND11" gate="1" x="-30.48" y="101.6" smashed="yes">
+<attribute name="VALUE" x="-33.02" y="99.06" size="1.778" layer="96"/>
+</instance>
+<instance part="C8" gate="G$1" x="78.74" y="82.55" smashed="yes">
+<attribute name="NAME" x="80.264" y="82.931" size="1.778" layer="95"/>
+<attribute name="VALUE" x="80.264" y="77.851" size="1.778" layer="96"/>
+</instance>
+<instance part="GND12" gate="1" x="78.74" y="73.66" smashed="yes">
+<attribute name="VALUE" x="76.2" y="71.12" size="1.778" layer="96"/>
+</instance>
+<instance part="GND13" gate="1" x="165.1" y="81.28" smashed="yes">
+<attribute name="VALUE" x="162.56" y="78.74" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16292,8 +16395,24 @@ LORA_EN
 <wire x1="210.82" y1="40.64" x2="218.44" y2="40.64" width="0.1524" layer="91"/>
 <label x="213.36" y="40.64" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="C7" gate="G$1" pin="2"/>
+<wire x1="-30.48" y1="105.41" x2="-30.48" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="GND11" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C8" gate="G$1" pin="2"/>
+<wire x1="78.74" y1="77.47" x2="78.74" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="GND12" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="GND13" gate="1" pin="GND"/>
+<wire x1="165.1" y1="83.82" x2="165.1" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="U5" gate="G$1" pin="VIN-"/>
+<wire x1="165.1" y1="86.36" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
+</segment>
 </net>
-<net name="N$2" class="0">
+<net name="V_RECT" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="C1" gate="G$1" pin="+"/>
@@ -16304,6 +16423,7 @@ LORA_EN
 <wire x1="48.26" y1="133.35" x2="58.42" y2="133.35" width="0.1524" layer="91"/>
 <junction x="48.26" y="133.35"/>
 <junction x="58.42" y="133.35"/>
+<label x="50.8" y="134.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -16331,7 +16451,7 @@ LORA_EN
 <label x="19.05" y="151.13" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="5V_CORE" class="0">
 <segment>
 <pinref part="D2" gate="G$1" pin="C"/>
 <pinref part="U3" gate="G$1" pin="VIN"/>
@@ -16339,6 +16459,7 @@ LORA_EN
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="123.19" y1="142.24" x2="129.54" y2="142.24" width="0.1524" layer="91"/>
 <junction x="123.19" y="142.24"/>
+<label x="109.22" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="3V3_MAIN" class="0">
@@ -16479,6 +16600,18 @@ LORA_EN
 <wire x1="185.42" y1="86.36" x2="190.5" y2="86.36" width="0.1524" layer="91"/>
 <junction x="185.42" y="86.36"/>
 <label x="190.5" y="86.36" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="C7" gate="G$1" pin="1"/>
+<wire x1="-30.48" y1="113.03" x2="-30.48" y2="114.3" width="0.1524" layer="91"/>
+<label x="-30.48" y="114.3" size="1.778" layer="95"/>
+<wire x1="-30.48" y1="114.3" x2="-25.4" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C8" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="85.09" x2="78.74" y2="86.36" width="0.1524" layer="91"/>
+<label x="78.74" y="86.36" size="1.778" layer="95"/>
+<wire x1="78.74" y1="86.36" x2="83.82" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3V3_EXT" class="0">
@@ -16638,7 +16771,7 @@ LORA_EN
 <label x="-15.24" y="99.06" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U5" gate="G$1" pin="VIN"/>
+<pinref part="U5" gate="G$1" pin="VIN+"/>
 <wire x1="162.56" y1="96.52" x2="167.64" y2="96.52" width="0.1524" layer="91"/>
 <label x="163.83" y="96.52" size="1.778" layer="95"/>
 </segment>
