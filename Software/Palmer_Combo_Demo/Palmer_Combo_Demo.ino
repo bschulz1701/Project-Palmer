@@ -311,7 +311,7 @@ void TCS_AutoRange()
 
 			PrevIntIndex = TCS_IntIndex; //Store values after incrementing
 			PrevGainIndex = TCS_GainIndex;
-			#ifdef(WHITE_RABBIT_OBJECT)
+			#if defined(WHITE_RABBIT_OBJECT)
 				Serial.print("Gain = ");
 				Serial.print(TCS_GainIndex);
 				Serial.print(" Int = ");
@@ -320,10 +320,12 @@ void TCS_AutoRange()
 		}
 	}
 
-	Serial.print("Gain = ");
-	Serial.print(TCS_GainIndex);
-	Serial.print(" Int = ");
-	Serial.println(TCS_IntIndex);
+	#if defined(WHITE_RABBIT_OBJECT)
+		Serial.print("Gain = ");
+		Serial.print(TCS_GainIndex);
+		Serial.print(" Int = ");
+		Serial.println(TCS_IntIndex);
+	#endif
 
 }
 
@@ -356,7 +358,7 @@ boolean TCS_TestOverflow() //FIX! Improve efficiency!
 	
 	delay(TCS_WaitTime[TCS_IntIndex]);
 	long OverflowCount = min((256 - long(TCS_IntTimes[TCS_IntIndex]))*1024, 65535); //Find the maximum count value for a given integration time
-	#ifdef(WHITE_RABBIT_OBJECT)
+	#if defined(WHITE_RABBIT_OBJECT)
  		Serial.print("Overflow val = "); Serial.println(OverflowCount);
 	#endif
 	// float EdgeRange = 0.9; //Acceptable range utilization 
