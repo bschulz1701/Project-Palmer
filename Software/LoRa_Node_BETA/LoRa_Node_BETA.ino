@@ -1,6 +1,29 @@
+/******************************************************************************
+LoRa_Node_BETA.ino
+Logger software for Project Palmer (BETA development)
+Primary Board = v0.0
+Remote Board = v0.0
+Control Board = LoRa 32u4 (BSFrance II)
+
+Bobby Schulz @ Northern Widget LLC
+11/20/2019
+Hardware info located at: https://github.com/bschulz1701/Project-Palmer/Hardware
+
+Designed to send data collection over LoRa at 1 second intervals, and update baseline values every 15 seconds along with auto-range light sensor
+
+"Size matter not. Look at me. Judge me by my size do you? And well you should not. For my ally is the
+Force, and a powerful ally it is"
+-Yoda
+
+Distributed as-is; no warranty is given.
+******************************************************************************/
+
+/*********
+Future Feature Set:
+- 5v plug detection (check state of pullup)
+- Report error code register (array generated, not distributed)
+*********/
 #include <Arduino.h>
-//MargayDemo.ino
-//#include "Margay.h"
 #include "Adafruit_SGP30.h"
 #include <BME.h>
 #include <MCP3421.h>
@@ -13,8 +36,10 @@
 
 #define NUM_DEPTH_NODES 3 //Number of sensor depth nodes
 #define BASELINE_UPDATE_PERIOD 15 //How many samples between updates to baseline values
+#define UPDATE_PERIOD 1000 //Number of milliseconds between primary sensor updates
 
 //#define WHITE_RABBIT_OBJECT
+#define SHERLOCK
 
 
 ///////////////////////////////////// Initialize PRIMARY board //////////////////////////////////////
@@ -97,9 +122,6 @@ float RemoteData[16] = {0}; //Data array for sensor package
 boolean RemoteErrorFlags[NUM_FLAGS_REMOTE] = {0}; //Set of error flags to keep track of status of remote sensor array, set on error
 //TCS3400, BME280, SGP30, MCP3221
 
-////////////////////////////////////// Initialize MARGAY external control /////////////////////////////////////
-
-// Margay Logger(Model_1v0, Build_B);  //Use build_b with correct ADC for board
 
 void setup() {
   readSerialNumber();
@@ -108,11 +130,16 @@ void setup() {
   // digitalWrite(22, HIGH); //Turn external power on for Margay
   InitPrimary(); //Initialize primary logger board
   InitRemote(); //Initalize remote sensor unit
+  #if defined(SHERLOCK)
+    Serial.println("ID, IR, Red, Green, Blue, IntVal, GainVal, Pressure, Humidity, Temp, TVOC[ppb], eCO2[ppm], H2, Ethanol, eCOS_Base, TVOC_base, O2, Temp0, Moist0, Temp1, Moist1, Temp2, Moist2");
+  #endif
+  delay(25);
   //FIX! Seperate InitArray from InitPrimary
 }
 
 void loop() {
   static int UpdateCount = 0;
+  unsigned long StartLog = millis(); //Keep start time to keep period
   if(UpdateCount == 0) {
     GetRemoteData(true); //Call data from remote unit, update baseline values
     UpdateCount = BASELINE_UPDATE_PERIOD; //Reset UpdateCount
@@ -122,27 +149,39 @@ void loop() {
   GetArrayData(); //Call data from sensor array
   LoRa.beginPacket();
   //Print data
-  Serial.println(serialNumber);
+  #if defined(SHERLOCK)
+    Serial.print(serialNumber);
+    Serial.print(',');
+  #endif
   LoRa.print(serialNumber);
   LoRa.print(",");
   for(int i = 0; i < 16; i++) {  //FIX! hardcode
-    Serial.println(RemoteData[i]);
+    #if defined(SHERLOCK)
+      Serial.print(RemoteData[i]);
+      Serial.print(',');
+    #endif
     LoRa.print(RemoteData[i]);
     LoRa.print(",");
   }
 
-  Serial.print("\n");
   for(int i = 0; i < 3; i++) {
-    Serial.println(TempData[i]);
+    #if defined(SHERLOCK)
+      Serial.print(TempData[i]);
+      Serial.print(',');
+      Serial.print(MoistData[i]);
+      Serial.print(',');
+    #endif
     LoRa.print(TempData[i]);
     LoRa.print(",");
-    Serial.println(MoistData[i]);
+    LoRa.print(MoistData[i]);
     LoRa.print(",");
   }
-  Serial.print("\n\n");
+  #if defined(SHERLOCK)
+    Serial.print("\n");
+  #endif
   LoRa.print("\n");
   LoRa.endPacket();
-  delay(1000);
+  while(millis() - StartLog < UPDATE_PERIOD); //Wait until update
   UpdateCount--;
 }
 
@@ -199,11 +238,13 @@ void GetRemoteData(boolean Baseline)
   ClearErrorFlags(); //Clear error flags before reading data
   //Get TCS3400 Data
   WriteByte(ADR_TCS, TCS_REG_EN, 0x03); //Enable sensor and ADC
-  TCS_AutoRange(); //FIX! move to lower freq
-  WriteByte(ADR_TCS, TCS_REG_INT_TIME, TCS_IntTimes[TCS_IntIndex]); //Update integration time
-  WriteByte(ADR_TCS, TCS_REG_GAIN, TCS_GainVals[TCS_GainIndex]); //Update gain value
-  delay(TCS_WaitTime[TCS_IntIndex]);
-  delay(10);
+  if(Baseline) { //Only auto-range every baseline update time
+    TCS_AutoRange(); //FIX! move to lower freq
+    WriteByte(ADR_TCS, TCS_REG_INT_TIME, TCS_IntTimes[TCS_IntIndex]); //Update integration time
+    WriteByte(ADR_TCS, TCS_REG_GAIN, TCS_GainVals[TCS_GainIndex]); //Update gain value
+    delay(TCS_WaitTime[TCS_IntIndex]);
+    delay(10);
+  }
   boolean TempError = false;
   for(int i = 0; i < 4; i++) {
 
@@ -257,6 +298,12 @@ void GetRemoteData(boolean Baseline)
 
   //Get O2 Data
   RemoteData[15] = GetVoltage(); //FIX! Fix voltage call function, use library instead
+  #if defined(WHITE_RABBIT_OBJECT) //Print error flags if set
+    Serial.println("Error Flags:");
+    for(int i = 0; i < NUM_FLAGS_REMOTE; i++) {
+      Serial.println(RemoteErrorFlags[i]);
+    }
+  #endif
   // RemoteErrorFlags[3] = ?? //FIX! Add error flag
 }
 
