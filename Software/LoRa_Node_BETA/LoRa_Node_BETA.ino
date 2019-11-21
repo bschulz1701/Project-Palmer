@@ -11,9 +11,8 @@ Hardware info located at: https://github.com/bschulz1701/Project-Palmer/Hardware
 
 Designed to send data collection over LoRa at 1 second intervals, and update baseline values every 15 seconds along with auto-range light sensor
 
-"Size matter not. Look at me. Judge me by my size do you? And well you should not. For my ally is the
-Force, and a powerful ally it is"
--Yoda
+"The most rewarding things you do in life are often the ones that look like they cannot be done."
+-Arnold Palmer
 
 Distributed as-is; no warranty is given.
 ******************************************************************************/
@@ -31,8 +30,19 @@ Future Feature Set:
 #include <MCP23008.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <SPI.h>
 #include <LoRa.h>
 #include <avr/boot.h>
+
+  #define SCK     15
+  #define MISO    14
+  #define MOSI    16
+  #define SS      8
+  #define RST     4
+  #define DI0     7
+  #define BAND    915E6  // 915E6
+  #define PABOOST true 
+  
 
 #define NUM_DEPTH_NODES 3 //Number of sensor depth nodes
 #define BASELINE_UPDATE_PERIOD 15 //How many samples between updates to baseline values
@@ -125,13 +135,16 @@ boolean RemoteErrorFlags[NUM_FLAGS_REMOTE] = {0}; //Set of error flags to keep t
 
 void setup() {
   readSerialNumber();
-  LoRa.begin(915E6);
+  LoRa.setPins(SS,RST,DI0);
+  LoRa.begin(BAND,PABOOST );
   // pinMode(22, OUTPUT);
   // digitalWrite(22, HIGH); //Turn external power on for Margay
   InitPrimary(); //Initialize primary logger board
   InitRemote(); //Initalize remote sensor unit
+  Serial1.begin(9600); //Used to echo to broken out serial lines
   #if defined(SHERLOCK)
     Serial.println("ID, IR, Red, Green, Blue, IntVal, GainVal, Pressure, Humidity, Temp, TVOC[ppb], eCO2[ppm], H2, Ethanol, eCOS_Base, TVOC_base, O2, Temp0, Moist0, Temp1, Moist1, Temp2, Moist2");
+    Serial1.println("ID, IR, Red, Green, Blue, IntVal, GainVal, Pressure, Humidity, Temp, TVOC[ppb], eCO2[ppm], H2, Ethanol, eCOS_Base, TVOC_base, O2, Temp0, Moist0, Temp1, Moist1, Temp2, Moist2");
   #endif
   delay(25);
   //FIX! Seperate InitArray from InitPrimary
@@ -152,6 +165,8 @@ void loop() {
   #if defined(SHERLOCK)
     Serial.print(serialNumber);
     Serial.print(',');
+    Serial1.print(serialNumber);
+    Serial1.print(',');
   #endif
   LoRa.print(serialNumber);
   LoRa.print(",");
@@ -159,6 +174,8 @@ void loop() {
     #if defined(SHERLOCK)
       Serial.print(RemoteData[i]);
       Serial.print(',');
+      Serial1.print(RemoteData[i]);
+      Serial1.print(',');
     #endif
     LoRa.print(RemoteData[i]);
     LoRa.print(",");
@@ -170,6 +187,10 @@ void loop() {
       Serial.print(',');
       Serial.print(MoistData[i]);
       Serial.print(',');
+      Serial1.print(TempData[i]);
+      Serial1.print(',');
+      Serial1.print(MoistData[i]);
+      Serial1.print(',');
     #endif
     LoRa.print(TempData[i]);
     LoRa.print(",");
@@ -178,6 +199,7 @@ void loop() {
   }
   #if defined(SHERLOCK)
     Serial.print("\n");
+    Serial1.print("\n");
   #endif
   LoRa.print("\n");
   LoRa.endPacket();
@@ -187,7 +209,7 @@ void loop() {
 
 void InitPrimary()
 {
-  pinMode(11, OUTPUT);
+//  pinMode(11, OUTPUT);
   Serial.begin(38400);
   Serial.println("Begin Palmer Remote Test...");
   IO.begin();
