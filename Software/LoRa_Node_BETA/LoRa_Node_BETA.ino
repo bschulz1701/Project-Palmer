@@ -46,7 +46,7 @@ Future Feature Set:
 
 #define NUM_DEPTH_NODES 3 //Number of sensor depth nodes
 #define BASELINE_UPDATE_PERIOD 15 //How many samples between updates to baseline values
-#define UPDATE_PERIOD 1000 //Number of milliseconds between primary sensor updates
+#define UPDATE_PERIOD 10000 //Number of milliseconds between primary sensor updates
 
 //#define WHITE_RABBIT_OBJECT
 #define SHERLOCK
@@ -134,6 +134,7 @@ boolean RemoteErrorFlags[NUM_FLAGS_REMOTE] = {0}; //Set of error flags to keep t
 
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
   readSerialNumber();
   LoRa.setPins(SS,RST,DI0);
   LoRa.begin(BAND,PABOOST );
@@ -153,6 +154,7 @@ void setup() {
 void loop() {
   static int UpdateCount = 0;
   unsigned long StartLog = millis(); //Keep start time to keep period
+  digitalWrite(LED_BUILTIN, HIGH); //Blink LED on transmit 
   if(UpdateCount == 0) {
     GetRemoteData(true); //Call data from remote unit, update baseline values
     UpdateCount = BASELINE_UPDATE_PERIOD; //Reset UpdateCount
@@ -203,6 +205,7 @@ void loop() {
   #endif
   LoRa.print("\n");
   LoRa.endPacket();
+  digitalWrite(LED_BUILTIN, LOW); 
   while(millis() - StartLog < UPDATE_PERIOD); //Wait until update
   UpdateCount--;
 }
